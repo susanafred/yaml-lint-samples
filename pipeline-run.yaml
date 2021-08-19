@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata: 
+  generateName: express-sample-app-pipeline-run-
+params:
+  - name: source-repo
+    value: https://github.com/susanafred/express-sample-app
+spec:
+  pipelineRef:
+    name: nodejs-pipeline
+  workspaces:
+  - name: pipeline-shared-data
+    emptyDir: {}
+
